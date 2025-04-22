@@ -37,18 +37,21 @@ namespace Examen.DAL.Data
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Tournament)
-                .WithMany( m => m.Matches)
-                .HasForeignKey(m => m.TournamentId);
+                .WithMany(m => m.Matches)
+                .HasForeignKey(m => m.TournamentId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Team1)
-                .WithMany(m => m.Matches)
-                .HasForeignKey(m => m.TournamentId);
+                .WithMany(m => m.HomeMatches)
+                .HasForeignKey(m => m.TournamentId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Team2)
-                .WithMany(m => m.Matches)
-                .HasForeignKey(m => m.TournamentId);
+                .WithMany(m => m.AwayMatches)
+                .HasForeignKey(m => m.TournamentId)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
         }

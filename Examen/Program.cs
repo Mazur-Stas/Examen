@@ -1,10 +1,41 @@
-﻿namespace Examen
+﻿using Examen.Services;
+using Examen.DAL.Entities;
+using Examen.DAL;
+
+namespace Examen
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            TeamAndMatchService context = new TeamAndMatchService();
 
+
+            Team team1 = new Team()
+            {
+               City = "Liverpool",
+               Name = "Liverpool",
+               WinCount = 5
+            };
+            Team team2= new Team()
+            {
+                City = "Manchester",
+                Name = "Manchester United",
+                WinCount = 7
+            };
+
+            //context.AddTeam(team1);
+            //context.AddTeam(team2);
+
+            Match match = new Match()
+            {
+                MatchDate = DateTime.Now,
+                Team1Id = team1.Id,
+                Team2Id = team2.Id
+            };
+
+            context.AddMacth(match);
+            context.ShowAllMatches();
         }
     }
 }

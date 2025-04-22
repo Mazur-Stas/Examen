@@ -13,8 +13,9 @@ namespace Examen.DAL.Entities
         public string Name { get; set; }
         public string City { get; set; }
 
-        
-        public ICollection<Match> Matches { get; set; } = new List<Match>();
+        public int WinCount { get; set; }
+        public ICollection<Match> HomeMatches { get; set; } = new List<Match>();
+        public ICollection<Match> AwayMatches { get; set; } = new List<Match>();
     }
 
 
