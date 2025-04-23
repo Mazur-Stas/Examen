@@ -66,6 +66,7 @@ namespace Examen.Services
         {
             _matchRepository.Add(match);
         }
+
         public void UpdateMatch(int Id, Match match)
         {
             var mt = _matchRepository.GetAll().FirstOrDefault(o => o.Id == Id);
@@ -73,7 +74,9 @@ namespace Examen.Services
             {
 
                 mt.MatchDate = match.MatchDate;
-                //розібратися 
+                mt.Team1Id = match.Team1Id;
+                mt.Team2Id = match.Team2Id;
+                mt.TournamentId = match.TournamentId;
                 _matchRepository.Update(mt);
             }
         }
@@ -91,5 +94,6 @@ namespace Examen.Services
                 Console.WriteLine($"\nId: {match.Id}, Match: {match.Team1.Name} VS. {match.Team2.Name}, Date: {match.MatchDate} ");
             }
         }
+
     }
 }
