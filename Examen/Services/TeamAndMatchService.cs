@@ -55,6 +55,14 @@ namespace Examen.Services
                 Console.WriteLine($"\nId: {team.Id}, Name: {team.Name}, City: {team.City} , Win coumt: {team.WinCount}");
             }
         }
+        public void ShowRanking()
+        {
+            var teams = GetAllTeam().OrderByDescending(t => t.WinCount);
+            foreach (var team in teams)
+            {
+                Console.WriteLine($"\nId: {team.Id}, Name: {team.Name}, City: {team.City} , Win coumt: {team.WinCount}");
+            }
+        }
 
         // ==============  Matches  ==============
 
@@ -89,6 +97,15 @@ namespace Examen.Services
         public void ShowAllMatches()
         {
             var matches = GetAllMatch();
+            foreach (var match in matches)
+            {
+                Console.WriteLine($"\nId: {match.Id}, Match: {match.Team1.Name} VS. {match.Team2.Name}, Date: {match.MatchDate} ");
+            }
+        }
+        public void ShowAllMatchesSort()
+        {
+            var matches = GetAllMatch().OrderByDescending(m => m.MatchDate);
+            
             foreach (var match in matches)
             {
                 Console.WriteLine($"\nId: {match.Id}, Match: {match.Team1.Name} VS. {match.Team2.Name}, Date: {match.MatchDate} ");

@@ -45,7 +45,12 @@ namespace Examen.Services
             var tournaments = GetAllTournament();
             foreach (var tournament in tournaments)
             {
-                Console.WriteLine($"\nId: {tournament.Id}, Name: {tournament.Name}, Matches : ");} //доробити
+                Console.WriteLine($"\nId: {tournament.Id}, Name: {tournament.Name}, Matches : ");
+                foreach(var match in tournament.Matches)
+                {
+                    Console.WriteLine($"\nId: {match.Id}, Match: {match.Team1.Name} VS. {match.Team2.Name}, Date: {match.MatchDate} ");
+                }
+            } 
         }
     }
 }
